@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style_userAccountCreation.css"/>
+        <title>AccountCreation</title>
+    </head>
+
+    <body>
+        <form method="post" action="/results">
+
+            <p>
+                <label for="firstname">Firstame :</label>
+                <input type="text" name="firstname" placeholder="Firstname" id="firstname" required/>
+
+                <label for="lastname">Lastname :</label>
+                <input type="text" name="lastname" placeholder="Lastname" id="lastname" required/>
+
+                <label for="date">Birthdate :</label>
+                <input type="date" name="date" placeholder="Date" id="date" required/>
+
+                <p>Gender :</p>
+                <div>
+                    <label for="man">Man</label>
+                    <input type="radio" id="man" name="gender" value="man" checked/>
+                </div>
+                  
+                <div>
+                    <label for="woman">Woman</label>
+                    <input type="radio" id="woman" name="gender" value="woman">
+                </div>
+
+                <label for="height">Height (cm):</label>
+                <input type="number" name="height" id="height" max="250" required/>
+
+                <label for="weight">Weight (kg):</label>
+                <input type="number" name="weight" id="weight" max="200" required/>
+
+                <label for="email">Email :</label>
+                <input type="email" name="email" placeholder="Email" id="email" required/>
+
+                <label for="password">Password :</label>
+                <input type="password" name="password" id="password" required/>
+
+                <label for="password_">Confirm Password :</label>
+                <input type="password" name="_confirm" id="password_confirm" required/>
+
+                <input type="submit" value="Envoyer"/>
+            </p>
+
+        </form>
+    </body>
+
+</html>
