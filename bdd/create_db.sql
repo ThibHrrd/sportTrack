@@ -33,3 +33,8 @@ CREATE TABLE IF NOT EXISTS data_acitivty (
 	anActivity INTEGER(4) NOT NULL,
 	FOREIGN KEY(anActivity) REFERENCES activity(id_activity)
 );
+
+
+INSERT INTO user VALUES(0001, "HERARD", "Thibault", datetime('now'), 0, 180, 70, "thibz@gmail.com", "ouioui");
+INSERT INTO activity VALUES(0001, datetime('now'), "course de 800m", 0001);
+INSERT INTO data_acitivty VALUES(0001, datetime('localtime'), 90, 47.12, -2.123, 18, 0001);
