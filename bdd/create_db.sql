@@ -1,6 +1,4 @@
-DROP TABLE user;
-
-CREATE TABLE user (
+CREATE TABLE IF NOT EXISTS user (
 
 	lastname TEXT NOT NULL,
 	firstname TEXT NOT NULL,
@@ -14,7 +12,7 @@ CREATE TABLE user (
 	PRIMARY KEY (lastname, firstname)
 );
 
-CREATE TABLE activity (
+CREATE TABLE IF NOT EXISTS activity (
 
 	activity_date TIMESTAMP NOT NULL,
 	activity_description TEXT NOT NULL,
@@ -22,10 +20,10 @@ CREATE TABLE activity (
 	PRIMARY KEY (activity_date, activity_description)
 );
 
-CREATE TABLE data (
+CREATE TABLE IF NOT EXISTS data_acitivty (
 
 	data_time DATE TIME NOT NULL,
-	cardio-frequency INTEGER NOT NULL,
+	cardio_frequency INTEGER NOT NULL,
 	latitude FLOAT NOT NULL,
 	longitude FLOAT NOT NULL,
 	altitude INTEGER NOT NULL
