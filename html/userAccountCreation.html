@@ -13,10 +13,10 @@
 
             <p>
                 <label for="firstname">Firstame :</label>
-                <input type="text" name="firstname" placeholder="Firstname" id="firstname" required/>
+                <input type="text" name="firstname" pattern="[^\\]+[^0-9]" placeholder="Firstname" id="firstname" required/>
 
                 <label for="lastname">Lastname :</label>
-                <input type="text" name="lastname" placeholder="Lastname" id="lastname" required/>
+                <input type="text" name="lastname" pattern="[^\\]+[^0-9]" placeholder="Lastname" id="lastname" required/>
 
                 <label for="date">Birthdate :</label>
                 <input type="date" name="date" placeholder="Date" id="date" required/>
@@ -39,13 +39,13 @@
                 <input type="number" name="weight" id="weight" max="200" required/>
 
                 <label for="email">Email :</label>
-                <input type="email" name="email" placeholder="Email" id="email" required/>
+                <input type="email" name="email" pattern="[^\]" placeholder="Email" id="email" required/>
 
                 <label for="password">Password :</label>
-                <input type="password" name="password" id="password" required/>
+                <input type="password" name="password" pattern="[^\]" id="password" required/>
 
                 <label for="password_">Confirm Password :</label>
-                <input type="password" name="_confirm" id="password_confirm" required/>
+                <input type="password" name="_confirm" pattern="[^\]" id="password_confirm" required/>
 
                 <input type="submit" value="Envoyer"/>
             </p>
