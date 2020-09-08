@@ -1,12 +1,12 @@
 <?php
 
-include("JSON_Distance.php");
+include("SqliteConnection.php");
 
-$distanceCalulator = new JSON_Distance();
+$sqlite = new SqliteConnection();
 
-$path = "activity.json";
+$path = "../../bdd/sport_track.db";
+$pdo = $sqlite->connect($path);
 
-//expected : ~770m
-echo($distanceCalulator->getDistance($path))
+echo($pdo->query("SELECT * FROM User"));
 
 ?>
