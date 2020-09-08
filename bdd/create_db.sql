@@ -4,7 +4,7 @@ CREATE TABLE user (
 
 	lastname TEXT NOT NULL,
 	firstname TEXT NOT NULL,
-	birthday TIMESTAMP NOT NULL,
+	birthday DATE NOT NULL,
 	gender INTEGER NOT NULL,
 	weight INTEGER NOT NULL,
 	height INTEGER NOT NULL,
@@ -24,6 +24,9 @@ CREATE TABLE activity (
 
 CREATE TABLE data (
 
-	data_time 
-
+	data_time DATE TIME NOT NULL,
+	cardio-frequency INTEGER NOT NULL,
+	latitude FLOAT NOT NULL,
+	longitude FLOAT NOT NULL,
+	altitude INTEGER NOT NULL
 );
