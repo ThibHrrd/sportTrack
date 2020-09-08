@@ -1,4 +1,7 @@
 <?php
+
+    include("CalculDistance.php");
+
     class CalculDistanceImpl implements CalculDistance
     {
         /**
@@ -11,7 +14,20 @@
          */
         public function calculDistance2PointsGPS($lat1, $long1, $lat2, $long2)
         {
-            //le calcul
+            // convert from degrees to radians
+            $latFrom = deg2rad($lat1);
+            $lonFrom = deg2rad($long1);
+            $latTo = deg2rad($lat2);
+            $lonTo = deg2rad($long2);
+
+            $earthRadius = 6371000;
+
+            $latDelta = $latTo - $latFrom;
+            $lonDelta = $lonTo - $lonFrom;
+
+            $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) + cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+            
+            return $angle * $earthRadius;
         }
 
         /**
@@ -22,6 +38,21 @@
          */
         public function calculDistanceTrajet(Array $parcours)
         {
-            //le calcul
+            // init total distance
+            $totalDistance = 0;
+
+            // getting intermediate distance between each GPS coordinates
+            for ($i = 1; $i <= sizeof($parcours); $i+4) {
+                $lat1 = var_dump($parcours[$i]);
+                $long1 = var_dump($parcours[$i+1]);
+                $lat2 = var_dump($parcours[$i+2]);
+                $long2 = var_dump($parcours[$i+3]);
+
+                $distance = calculDistance2PointsGPS($lat1, $long1, $lat2, $long2);
+
+                $totalDistance += $distance;
+            }
+
+            return $distance;
         }
     }
