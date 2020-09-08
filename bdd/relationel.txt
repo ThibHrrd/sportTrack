@@ -1,4 +1,3 @@
 User(id_user (1), firstname NN, lastname NN, Birthdate NN, Gender NN, Height NN, Weight NN, Email NN, Password N)
 Activity(id_activity(1), Date NN, Descritpion NN, aUser=@User[id_user])
 Data(id_data(1), Time NN, Cardio_frequency NN, Latitude NN, Longitude NN, Altitude NN, anActivity=@Activity[id_activity])
-
