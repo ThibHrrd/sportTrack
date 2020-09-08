@@ -1,12 +1,11 @@
 <?php
 
-include("SqliteConnection.php");
+include("model/SqliteConnection.php");
 
 $sqlite = new SqliteConnection();
 
-$path = "../../bdd/sport_track.db";
+$path = "../bdd/sport_track.db";
 $pdo = $sqlite->connect($path);
 
-echo($pdo->query("SELECT * FROM User"));
 
 ?>
