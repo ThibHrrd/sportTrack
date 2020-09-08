@@ -6,7 +6,7 @@ $calculDistance = new CalculDistanceImpl();
 
 echo($calculDistance->calculDistance2PointsGPS(47.644795, -2.776605, 47.646870, -2.778911))
 
-$parcours = array(
+parcours = array(
     1 => 47.644795,
     2 => -2.776605,
     3 => 47.646870,
