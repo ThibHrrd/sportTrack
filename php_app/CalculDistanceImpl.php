@@ -42,13 +42,13 @@
             $totalDistance = 0;
 
             // getting intermediate distance between each GPS coordinates
-            for ($i = 1; $i <= sizeof($parcours); $i+4) {
-                $lat1 = var_dump($parcours[$i]);
-                $long1 = var_dump($parcours[$i+1]);
-                $lat2 = var_dump($parcours[$i+2]);
-                $long2 = var_dump($parcours[$i+3]);
+            for ($i = 0; $i < sizeof($parcours); $i+=4) {
+                $lat1 = $parcours[$i];
+                $long1 = $parcours[$i+1];
+                $lat2 = $parcours[$i+2];
+                $long2 = $parcours[$i+3];
 
-                $distance = calculDistance2PointsGPS($lat1, $long1, $lat2, $long2);
+                $distance = $this->calculDistance2PointsGPS($lat1, $long1, $lat2, $long2);
 
                 $totalDistance += $distance;
             }
