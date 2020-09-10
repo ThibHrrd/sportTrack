@@ -1,3 +1,7 @@
+DROP TABLE user;
+DROP TABLE activity;
+DROP TABLE data_acitivty;
+
 CREATE TABLE IF NOT EXISTS user (
 
 	id_user INTEGER PRIMARY KEY,
@@ -5,7 +9,7 @@ CREATE TABLE IF NOT EXISTS user (
 	firstname TEXT NOT NULL,
 	birthday DATE NOT NULL,
 	gender INTEGER NOT NULL CHECK (gender == "Man" OR gender == "Woman"),
-	weight INTEGER NOT NULL CHECK (weight >= 20 AND weight <= 250,
+	weight INTEGER NOT NULL CHECK (weight >= 20 AND weight <= 250),
 	height INTEGER NOT NULL CHECK (height >= 100 AND height <= 250),
 	mail TEXT NOT NULL CHECK (mail LIKE '%@%.%'),
 	password TEXT NOT NULL
@@ -38,7 +42,7 @@ DELETE FROM user;
 DELETE FROM activity;
 DELETE FROM data_acitivty;
 
-INSERT INTO user VALUES(0001, 'HERARD', 'Thibault', datetime('now'), 0, 180, 70, 'thibz@gmail.com', 'ouioui');
+INSERT INTO user VALUES(0001, 'HERARD', 'Thibault', datetime('now'), 'Man', 70, 180, 'thibz@gmail.com', 'ouioui');
 INSERT INTO activity VALUES(0002, datetime('now'), 'course de 800m', 0001);
 INSERT INTO data_acitivty VALUES(0003, datetime('now'), 90, 47.12, -2.123, 18, 0002);
 
