@@ -1,0 +1,6 @@
+Gender = {Man, Woman}
+0 <= Latitude <= 90
+0 <= Longitude <= 180
+0 <= Weight <= 250
+0 <= Height <= 250
+00:00:00 <= Time <= 24:59:59
