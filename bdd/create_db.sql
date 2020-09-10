@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS user (
 	weight INTEGER NOT NULL CHECK (weight >= 20 AND weight <= 250),
 	height INTEGER NOT NULL CHECK (height >= 100 AND height <= 250),
 	mail TEXT NOT NULL CHECK (mail LIKE '%@%.%'),
-	password TEXT NOT NULL
+	password TEXT NOT NULL,
 );
 
 CREATE TABLE IF NOT EXISTS activity (
