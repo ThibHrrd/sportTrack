@@ -1,6 +1,6 @@
 <?php
 
-class user{
+class User{
 
     private $id_user;
     private $lastname;
@@ -12,7 +12,9 @@ class user{
     private $email;
     private $password;
 
-    public function __construct($i,$l,$f,$b,$g,$h,$w,$e,$p){$this->init($i,$l,$f,$b,$g,$h,$w,$e,$p);}
+    public function __construct() {
+        
+    }
 
     public function init($i,$l,$f,$b,$g,$h,$w,$e,$p){
 
