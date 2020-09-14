@@ -2,11 +2,12 @@
 
     class SqliteConnection
     {
-        public function getConnection($db_path)
+
+        public function getConnection()
         {
             try{
 
-                $myPDO = new PDO('sqlite:'.$db_path);
+                $myPDO = new PDO('sqlite:../bdd/sport_track.db');
                 $myPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 return $myPDO;

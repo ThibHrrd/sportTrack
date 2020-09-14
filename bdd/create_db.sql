@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS user (
 	lastname TEXT NOT NULL,
 	firstname TEXT NOT NULL,
 	birthday DATE NOT NULL,
-	gender INTEGER NOT NULL CHECK (gender == "Man" OR gender == "Woman"),
+	gender TEXT NOT NULL CHECK (gender == "Man" OR gender == "Woman"),
 	weight INTEGER NOT NULL CHECK (weight >= 20 AND weight <= 250),
 	height INTEGER NOT NULL CHECK (height >= 100 AND height <= 250),
 	mail TEXT NOT NULL CHECK (mail LIKE '%@%.%'),

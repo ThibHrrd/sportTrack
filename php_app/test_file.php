@@ -1,14 +1,15 @@
 <?php
 
-include("model/SqliteConnection.php");
+include("model/UserDAO.php");
 
-$sqlite = new SqliteConnection();
+$dao = new UserDAO();
 
-$path = "../bdd/sport_track.db";
-$pdo = $sqlite->getConnection($path);
+print_r($dao->findAll());
 
-$query = "select * from user";
-print_r($sqlite->request($pdo, $query));
+$new_user = new User("0005", "DESMONTS", "Leo", "12:06:2001", "Man", "179", "70", "leo@gmail.com", "hohoho");
 
+$dao->insert($new_user);
+
+print_r($dao->findAll());
 
 ?>
