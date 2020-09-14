@@ -2,11 +2,25 @@
 
     class SqliteConnection
     {
-        public function connect($db_path)
+        public function getConnection($db_path)
         {
-            $myPDO = new PDO('sqlite:'.$db_path);
+            try{
 
-            return $myPDO;
+                $myPDO = new PDO('sqlite:'.$db_path);
+                $myPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                return $myPDO;
+
+            } catch(Exception $e) {
+
+                echo 'Exception reçue : ',  $e->getMessage(), "\n";
+                die();
+
+            }
+
+
+
+            
         }
 
         public function request($pdo, $query)
@@ -15,7 +29,9 @@
             $requete->execute();
             $result = $requete->fetchAll();
 
-            return $result;
+            return $result[0];
         }
+
+        
     }
 ?>

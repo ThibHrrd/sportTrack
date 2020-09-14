@@ -20,7 +20,7 @@
             $latTo = deg2rad($lat2);
             $lonTo = deg2rad($long2);
 
-            $earthRadius = 6371000;
+            $earthRadius = 6378137;
 
             $latDelta = $latTo - $latFrom;
             $lonDelta = $lonTo - $lonFrom;
