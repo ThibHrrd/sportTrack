@@ -1,15 +1,13 @@
 <?php
 
-include("SqliteConnection.php");
+require_once (__DIR__ . "/../SqliteConnection.php");
 include("User.php");
 
 class UserDAO {
 
     private static $dao;
-    private static $connect;
 
     public function __construct() {
-        self::$connect = new SqliteConnection();
     }
 
     public final static function getInstance() {
@@ -20,7 +18,7 @@ class UserDAO {
     }
 
     public final function findAll(){
-        $dbc = self::$connect->getConnection();
+        $dbc = SqliteConnection::getInstance()->getConnection();
         $query = "select * from user order by lastName,firstName";
         $stmt = $dbc->query($query);
         $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'User');
@@ -31,7 +29,7 @@ class UserDAO {
 
         if($u instanceof User){
 
-           $dbc = self::$connect->getConnection();
+            $dbc = SqliteConnection::getInstance()->getConnection();
            // prepare the SQL statement
            $query = "insert into user(id_user, lastname, firstname, birthdate, gender, weight, height, email, password) values (:i,:l,:f,:b,:g,:w,:h,:m,:p)";
            $stmt = $dbc->prepare($query);
@@ -56,7 +54,7 @@ class UserDAO {
 
         if($u instanceof User){
 
-            $dbc = self::$connect->getConnection();
+            $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
             $query = "delete from user WHERE (id_user= :i)";
             $stmt = $dbc->prepare($query);
@@ -73,7 +71,7 @@ class UserDAO {
 
     public function deleteAll(){
 
-        $dbc = self::$connect->getConnection();
+        $dbc = SqliteConnection::getInstance()->getConnection();
         // prepare the SQL statement
         $query = "delete from user";
         $stmt = $dbc->prepare($query);
@@ -83,7 +81,7 @@ class UserDAO {
 
     }
 
-    public final function update($u){
+    public function update($u){
 
         if($u instanceof User){
 
