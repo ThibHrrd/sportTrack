@@ -2,6 +2,7 @@
 
 require_once (__DIR__."/../SqliteConnection.php");
 include("Activity.php");
+include("User.php");
 
 class ActivityDAO {
 
@@ -31,17 +32,39 @@ class ActivityDAO {
            // prepare the SQL statement
            $query = "insert into Activity(id_activity, activity_date, activity_description, aUser) values (:i,:d,:a,:u)";
            $stmt = $dbc->prepare($query);
-  
+
            // bind the paramaters
            $stmt->bindValue(':i',$a->getID(),PDO::PARAM_INT);
            $stmt->bindValue(':d',$a->getActivityDate(),PDO::PARAM_STR);
            $stmt->bindValue(':a',$a->getActivityDescription(),PDO::PARAM_STR);
            $stmt->bindValue(':u',$a->getUser(),PDO::PARAM_STR);
-           
+
 
            // execute the prepared statement
            $stmt->execute();
        }
+    }
+
+    public function getUserActivities($u){
+
+      if($u instanceof User){
+
+        $dbc = SqliteConnection::getInstance()->getConnection();
+
+        // prepare the sql query to catch the activities of an user.
+        $query = "select * from data_activity where (aUser = :u)";
+        $stmt = $dbc->prepare($query);
+
+        $stmt->bindValue(':u',$u->getUser(),PDO::PARAM_STR);
+
+        // execute the prepared statement
+        $stmt->execute();
+
+
+
+      }
+
+
     }
 
     public function delete($a){
@@ -52,7 +75,7 @@ class ActivityDAO {
             // prepare the SQL statement
             $query = "delete from Activity WHERE (id_activity= :i)";
             $stmt = $dbc->prepare($query);
-  
+
             // bind the paramaters
             $stmt->bindValue(':i',$a->getID(),PDO::PARAM_INT);
 
@@ -77,10 +100,10 @@ class ActivityDAO {
     public function update($a){
 
         if($a instanceof Activity){
-    
+
             $this->delete($a); //It's a subterfuge :)
-            $this->insert($a); 
-    
+            $this->insert($a);
+
         }
     }
 

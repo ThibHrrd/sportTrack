@@ -2,6 +2,8 @@
 
 require_once (__DIR__."/../SqliteConnection.php");
 include("Activity.php");
+include("User.php");
+
 
 class ActivityEntryDAO {
 
@@ -31,7 +33,7 @@ class ActivityEntryDAO {
            // prepare the SQL statement
            $query = "insert into data_activity(id_data, data_time, cardio_frequency, latitude, longitude, altitude, anActivity) values (:i,:d,:c,:la,:lo,:a,:act)";
            $stmt = $dbc->prepare($query);
-  
+
            // bind the paramaters
            $stmt->bindValue(':i',$d->getID(),PDO::PARAM_INT);
            $stmt->bindValue(':d',$d->getDataTime(),PDO::PARAM_STR);
@@ -41,12 +43,14 @@ class ActivityEntryDAO {
            $stmt->bindValue(':a',$d->getAltitude(),PDO::PARAM_STR);
            $stmt->bindValue(':act',$d->getActivity(),PDO::PARAM_STR);
 
-           
+
 
            // execute the prepared statement
            $stmt->execute();
        }
     }
+
+    
 
     public function delete($d){
 
@@ -56,7 +60,7 @@ class ActivityEntryDAO {
             // prepare the SQL statement
             $query = "delete from data_activity WHERE (id_data= :i)";
             $stmt = $dbc->prepare($query);
-  
+
             // bind the paramaters
             $stmt->bindValue(':i',$d->getID(),PDO::PARAM_INT);
 
@@ -81,10 +85,10 @@ class ActivityEntryDAO {
     public function update($d){
 
         if($d instanceof Data){
-    
+
             $this->delete($d); //It's a subterfuge :)
-            $this->insert($d); 
-    
+            $this->insert($d);
+
         }
     }
 
