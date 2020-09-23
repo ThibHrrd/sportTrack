@@ -1,6 +1,6 @@
 DROP TABLE user;
 DROP TABLE activity;
-DROP TABLE data_acitivty;
+DROP TABLE data_activity;
 
 CREATE TABLE IF NOT EXISTS user (
 
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS activity (
 	FOREIGN KEY(aUser) REFERENCES user(id_user)
 );
 
-CREATE TABLE IF NOT EXISTS data_acitivty (
+CREATE TABLE IF NOT EXISTS data_activity (
 
 	id_data INTEGER(4) PRIMARY KEY,
 	data_time DATE TIME NOT NULL,
