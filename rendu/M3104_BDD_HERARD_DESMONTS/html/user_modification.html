@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<link rel="sylesheet" href="style.css"/>
+		<title>User Modification</title>
+
+	</head>
+
+	<body>
+
+		<form method="post" action="/post" >
+
+			<div>
+				<label for="mail">E-mail :</label>
+				<input type ="email" id="mail" name="user_mail" pattern="[^\]+"/>
+			</div>
+
+
+			<div>
+				<label for="password">Password :</label>
+				<input type="password" id="password" name="password" pattern="[^\]+"/>
+			</div>
+
+
+			<div>
+				<label for="lastname">Lastname :</label>
+				<input type="text" id="lastname" name="lastname" pattern="[^\]+[^0-9]+"/>
+			</div>
+
+
+			<div>
+				<label for="firstname">Firstname :</label>
+				<input type="text" id="firstname" name="firstname" pattern="[^\]+[^0-9]+"/>
+			</div>
+
+
+			<div>
+				<label for="birhtday">Birthday :</label>
+				<input type="date" id="birthday" name="birthday"/>
+			</div>
+
+
+			<div>
+				<label for="size">Size :</label>
+				<input type="number" id="size" name="size" min="0" max="250"/>
+			</div>
+
+
+			<div>
+				<label for="weight">Weight :</label>
+				<input type="number" id="weight" name="weight" min="0" max="200"/>
+			</div>
+
+
+			<div>
+				<label for="gender">Gender :</label><br />
+
+				<select name="gender" id="gender">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+
+			<div class="button">
+					<button type="submit">Submit</button>
+			</div>
+
+			
+
+		</form>
+	</body>
+
+</html>

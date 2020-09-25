@@ -1,5 +1,5 @@
 <?php
-require('Controller.php');
+require_once('Controller.php');
 
 class MainController implements Controller{
 

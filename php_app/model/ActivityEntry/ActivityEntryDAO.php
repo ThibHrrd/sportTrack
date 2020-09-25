@@ -1,8 +1,9 @@
 <?php
 
-require_once (__DIR__."/../SqliteConnection.php");
-include("Activity.php");
-include("User.php");
+require_once(__DIR__."/../SqliteConnection.php");
+require_once(__DIR__."/../Activity/Activity.php");
+require_once(__DIR__."/../User/User.php");
+
 
 
 class ActivityEntryDAO {

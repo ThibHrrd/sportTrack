@@ -1,11 +1,12 @@
 <?php
 
-require_once (__DIR__ . "/../SqliteConnection.php");
-include("User.php");
+require_once(__DIR__ . "/../SqliteConnection.php");
+require_once("User.php");
 
 class UserDAO {
 
     private static $dao;
+    private static $nb_lines;
 
     public function __construct() {
     }
@@ -13,6 +14,7 @@ class UserDAO {
     public final static function getInstance() {
         if(!isset(self::$dao)) {         //On verifie que l'objet est créer.
             self::$dao= new UserDAO();   //Si il est pas créer, alors on créer un unique objet DAO.
+            self::$nb_lines = 0;
         }
         return self::$dao;
     }
@@ -31,11 +33,10 @@ class UserDAO {
 
             $dbc = SqliteConnection::getInstance()->getConnection();
            // prepare the SQL statement
-           $query = "insert into user(id_user, lastname, firstname, birthdate, gender, weight, height, email, password) values (:i,:l,:f,:b,:g,:w,:h,:m,:p)";
+           $query = "insert into user(lastname, firstname, birthdate, gender, weight, height, email, password) values (:l,:f,:b,:g,:w,:h,:m,:p)";
            $stmt = $dbc->prepare($query);
   
            // bind the paramaters
-           $stmt->bindValue(':i',$u->getIdUser(),PDO::PARAM_INT);
            $stmt->bindValue(':l',$u->getLastName(),PDO::PARAM_STR);
            $stmt->bindValue(':f',$u->getFirstName(),PDO::PARAM_STR);
            $stmt->bindValue(':b',$u->getBirthdate(),PDO::PARAM_STR);
@@ -56,11 +57,11 @@ class UserDAO {
 
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "delete from user WHERE (id_user= :i)";
+            $query = "delete from user WHERE (email= :e)";
             $stmt = $dbc->prepare($query);
   
             // bind the paramaters
-            $stmt->bindValue(':i',$u->getIdUser(),PDO::PARAM_STR);
+            $stmt->bindValue(':e',$u->getEmail(),PDO::PARAM_STR);
 
             // execute the prepared statement
             $stmt->execute();
@@ -89,6 +90,17 @@ class UserDAO {
            $this->insert($u); 
 
        }
+    }
+
+    public function checkSuccess() {
+        
+        $returnValue = True;
+
+        if (count($this->findAll()) === self::$nb_lines) {
+            $returnValue = False;
+        }
+
+        return $returnValue;
     }
 
 

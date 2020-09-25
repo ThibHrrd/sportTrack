@@ -2,7 +2,6 @@
 
 class User{
 
-    private $id_user;
     private $lastname;
     private $firstname;
     private $birthdate;
@@ -16,9 +15,8 @@ class User{
         
     }
 
-    public function init($i,$l,$f,$b,$g,$h,$w,$e,$p){
+    public function init($l,$f,$b,$g,$h,$w,$e,$p){
 
-        $this->id_user = $i;
         $this->lastname = $l;
         $this->firstname = $f;
         $this->birthdate = $b;
@@ -30,7 +28,6 @@ class User{
 
     }
 
-    public function getIdUser(){return $this->id_user;}
     public function getLastName(){return $this->lastname;}
     public function getFirstName(){return $this->firstname;}
     public function getBirthdate(){return $this->birthdate;}
