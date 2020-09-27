@@ -9,7 +9,7 @@ class AddUserController implements Controller{
     public function inDatabase($email) {
 
         $User_dao = UserDAO::getInstance();
-        $userlist = $User_dao->fetchAll();
+        $userlist = $User_dao->findAll();
 
         $isInDatabase = False;
 
