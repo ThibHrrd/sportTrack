@@ -9,21 +9,33 @@ class AddUserController implements Controller{
     public function inDatabase($email) {
 
         $User_dao = UserDAO::getInstance();
-        $userlist = $User_dao->findAll();
+        $userlist = $User_dao->getEmail();
+
+
+        $size = count($userlist);
 
         $isInDatabase = False;
+        
+        for($i = 0 ; $i < $size ; $i++) {
 
-        foreach ($userlist["email"] as $value){
-            echo($value);
-            if ($key === "email" and $value === $email) {
-                $isInDatabase = False;
+            if ($userlist[$i]['email'] === $email) {
+                
+                $isInDatabase = True;
             }
+        }
+
+        if ($isInDatabase) {
+            echo("isInDatabase : True");
+        }
+        else {
+            echo("isInDatabase : False");
         }
 
         return $isInDatabase;
     }
 
     public function handle($request) {
+        
 
         $firstname = $request["firstname"];
         $lastname = $request["lastname"];

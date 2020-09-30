@@ -37,7 +37,7 @@ class User{
     public function getEmail(){return $this->email;}
     public function getPassword(){return $this->password;}
 
-    public function __toString(){return "USER = " . $this->firstname . $this->lastname;}
+    public function __toString(){return "USER = " . $this->firstname . " " . $this->lastname;}
 
 
 

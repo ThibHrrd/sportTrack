@@ -16,7 +16,7 @@ class ApplicationController{
             'list_activities' => ['controller'=>'ListActivitiesController', 'view'=>'ListActivitiesView'],
             'user_add_form' => ['controller'=>null, 'view'=>'AddUserForm'],
             'user_connect_form' => ['controller'=>null, 'view'=>'ConnectUserForm'],
-            'updload_activity_form' => ['controller'=>null, 'view'=>'UploadActivityForm'],
+            'upload_activity_form' => ['controller'=>null, 'view'=>'UploadActivityForm'],
 
         ];
     }

@@ -12,17 +12,52 @@ class UserDAO {
     }
 
     public final static function getInstance() {
+
         if(!isset(self::$dao)) {         //On verifie que l'objet est créer.
             self::$dao= new UserDAO();   //Si il est pas créer, alors on créer un unique objet DAO.
-            self::$nb_lines = 0;
+            self::$nb_lines = count(self::$dao->findAll());
         }
+
         return self::$dao;
     }
 
     public final function findAll(){
+
         $dbc = SqliteConnection::getInstance()->getConnection();
+
         $query = "select * from user order by lastName,firstName";
         $stmt = $dbc->query($query);
+        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'User');
+        return $results;
+    }
+
+    public final function findAllString(){
+
+        $dbc = SqliteConnection::getInstance()->getConnection();
+
+        $query = "select * from user order by lastName,firstName";
+        $stmt = $dbc->query($query);
+        $results = $stmt->fetchALL();
+        return $results;
+    }
+
+    public final function getEmail(){
+
+        $dbc = SqliteConnection::getInstance()->getConnection();
+
+        $query = "select email from user";
+        $stmt = $dbc->query($query);
+        $results = $stmt->fetchALL();
+        return $results;
+    }
+
+    public final function getUser($email){
+
+        $dbc = SqliteConnection::getInstance()->getConnection();
+
+        $query = "select * from user WHERE (email==:e)";
+        $stmt = $dbc->query($query);
+        $stmt->bindValue(':e',$email,PDO::PARAM_STR);
         $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'User');
         return $results;
     }
@@ -96,9 +131,11 @@ class UserDAO {
         
         $returnValue = True;
 
-        if (count($this->findAll()) === self::$nb_lines) {
+        if (count(self::$dao->findAll()) === self::$nb_lines) {
             $returnValue = False;
         }
+
+        self::$nb_lines = count(self::$dao->findAll());
 
         return $returnValue;
     }

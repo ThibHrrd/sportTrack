@@ -18,14 +18,14 @@
         {
             try{
 
-                $myPDO = new PDO('sqlite:../bdd/sport_track.db');
+                $myPDO = new PDO('sqlite:'.__DIR__.'/../bdd/sport_track.db');
                 $myPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 return $myPDO;
 
             } catch(Exception $e) {
 
-                echo 'Exception reçue : ',  $e->getMessage(), "\n";
+                echo ' Exception reçue : ',  $e->getMessage(), "\n";
                 die();
 
             }

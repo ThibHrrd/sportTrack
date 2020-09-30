@@ -7,13 +7,22 @@ require_once(__DIR__."/../User/User.php");
 class ActivityDAO {
 
     private static $dao;
+    public static $id_activity;
 
     public final static function getInstance() {
 
         if(!isset(self::$dao)) {         //On verifie que l'objet est créer.
             self::$dao= new ActivityDAO();   //Si il est pas créer, alors on créer un unique objet DAO.
+            self::$id_activity = 0;
         }
         return self::$dao;
+    }
+
+    public final function incID(){
+
+        echo("JE PASSE PAR LA ");
+        self::$id_activity++;
+
     }
 
     public final function findAll(){

@@ -23,6 +23,18 @@
 
             return $return_tab;
         }
+
+        public function read_JSON_entete($json_file)
+        {
+            $data = file_get_contents($json_file); //Le contenu du fichier est dans data
+            
+            $array = json_decode($data, true);  //faire un tableau avec les informations décodées
+
+            $return_tab[0] = $array["activity"]["date"];
+            $return_tab[1] = $array["activity"]["description"];
+            
+            return $return_tab;
+        }
         
 
         public function getDistance($path)

@@ -2,9 +2,9 @@
     $uDAO = UserDao::getInstance();
     
     if ($uDAO->checkSuccess()) {
-        echo("Success");
+        header("Location: http://m3104.iut-info-vannes.net/m3104_13/index.php?page=user_connect_form");
     }
     else {
-        echo("Error");
+        header("Location: http://m3104.iut-info-vannes.net/m3104_13/index.php?page=user_add_form");
     }
 ?>

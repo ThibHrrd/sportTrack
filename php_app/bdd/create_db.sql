@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS user (
 	lastname TEXT NOT NULL,
 	firstname TEXT NOT NULL,
 	birthdate DATE NOT NULL,
-	gender TEXT NOT NULL CHECK (gender == "Man" OR gender == "Woman"),
+	gender TEXT NOT NULL CHECK (gender == "man" OR gender == "woman"),
 	weight INTEGER NOT NULL CHECK (weight >= 20 AND weight <= 250),
 	height INTEGER NOT NULL CHECK (height >= 100 AND height <= 250),
 	email TEXT NOT NULL CHECK (email LIKE '%@%.%') PRIMARY KEY,
@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS activity (
 	activity_date TIMESTAMP NOT NULL,
 	activity_description TEXT NOT NULL,
 
-	aUser INTEGER NOT NULL,
-	FOREIGN KEY(aUser) REFERENCES user(id_user)
+	aUser TEXT NOT NULL,
+	FOREIGN KEY(aUser) REFERENCES user(email)
 );
 
 CREATE TABLE IF NOT EXISTS data_activity (
