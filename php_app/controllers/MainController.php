@@ -4,7 +4,7 @@ require_once('Controller.php');
 class MainController implements Controller{
 
     public function handle($request){
-        $_SESSION['message']= 'Hello World:';
+        header("Location: /m3104_13/index.php?page=user_connect");
     }
 }
 ?>

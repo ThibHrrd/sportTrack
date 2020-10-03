@@ -12,12 +12,17 @@
 
             $i = 0;
             $j = 0;
-            while ($i < sizeof($array["data"]))
-            {
-                $return_tab[$j] = $array["data"][$i]["latitude"];
-                $return_tab[$j+1] = $array["data"][$i]["longitude"];
 
-                $j+=2;
+            while ($i < sizeof($array["data"])){
+
+                echo($i);
+
+                $return_tab[$i]["time"] = $array["data"][$i]["time"];
+                $return_tab[$i]["cardio_frequency"] = $array["data"][$i]["cardio_frequency"];
+                $return_tab[$i]["latitude"] = $array["data"][$i]["latitude"];
+                $return_tab[$i]["longitude"] = $array["data"][$i]["longitude"];
+                $return_tab[$i]["altitude"] = $array["data"][$i]["altitude"];
+
                 $i++;
             }
 

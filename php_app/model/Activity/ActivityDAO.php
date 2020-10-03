@@ -6,14 +6,12 @@ require_once(__DIR__."/../User/User.php");
 
 class ActivityDAO {
 
-    private static $dao;
-    public static $id_activity;
+    public static $dao;
 
     public final static function getInstance() {
 
         if(!isset(self::$dao)) {         //On verifie que l'objet est créer.
-            self::$dao= new ActivityDAO();   //Si il est pas créer, alors on créer un unique objet DAO.
-            self::$id_activity = 0;
+            self::$dao = new ActivityDAO();   //Si il est pas créer, alors on créer un unique objet DAO.
         }
         return self::$dao;
     }
@@ -21,7 +19,8 @@ class ActivityDAO {
     public final function incID(){
 
         echo("JE PASSE PAR LA ");
-        self::$id_activity++;
+        $GLOBALS['id_activity'] = $GLOBALS['id_activity'] + 1;
+        echo($GLOBALS['id_activity']);
 
     }
 
@@ -59,17 +58,10 @@ class ActivityDAO {
       if($u instanceof User){
 
         $dbc = SqliteConnection::getInstance()->getConnection();
-
-        // prepare the sql query to catch the activities of an user.
-        $query = "select * from data_activity where (aUser = :u)";
-        $stmt = $dbc->prepare($query);
-
-        $stmt->bindValue(':u',$u->getUser(),PDO::PARAM_STR);
-
-        // execute the prepared statement
-        $stmt->execute();
-
-
+        $query = "select * from activity WHERE (aUser = 'leo951206@gmail.com')";
+        $stmt = $dbc->query($query);
+        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'Activity');
+        return $results;
 
       }
 
@@ -114,6 +106,22 @@ class ActivityDAO {
             $this->insert($a);
 
         }
+    }
+
+    public function getID() {
+        $dbc = SqliteConnection::getInstance()->getConnection();
+        $query = "select id_activity from activity order by id_activity desc";
+        $stmt = $dbc->query($query);
+        $results = $stmt->fetchALL();
+
+        if (empty($results)) {
+            $results = 0;
+        }
+        else {
+            $results = ((int)$results[0]['id_activity'])+1;
+        }
+
+        return $results;
     }
 
     }

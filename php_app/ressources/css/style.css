@@ -1,0 +1,44 @@
+table
+{
+    border-collapse: collapse;
+    text-align: center;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+
+td
+{
+    border: 3px solid black;
+    padding: 7px;
+    color: black;
+}
+
+th
+{
+    color: black;
+}
+
+h1
+{
+    text-align: center;
+}
+
+#Error 
+{
+    size: 3em;
+    font-weight: bold;
+}
+
+body
+{
+    background: url("http://m3104.iut-info-vannes.net/m3104_13/ressources/images/background.jpg") no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+
+    font-size: 1.2em;
+    color: slategrey;
+
+    -webkit-text-stroke-width: 0.8px;
+    -webkit-text-stroke-color: black;
+}

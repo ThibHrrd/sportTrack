@@ -15,6 +15,7 @@ class ConnectUserController implements Controller{
 
         if ($allowed) {
             $_SESSION['id'] = $email;
+            header("Location:  http://m3104.iut-info-vannes.net/m3104_13/index.php?page=list_activities");
         }
         else {
             header("Location:  http://m3104.iut-info-vannes.net/m3104_13/index.php?page=user_connect_form");

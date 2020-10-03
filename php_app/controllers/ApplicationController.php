@@ -7,12 +7,12 @@ class ApplicationController{
     private function __construct(){
         // Sets the controllers and the views of the application.
         $this->routes = [
-            '/' => ['controller'=>'MainController', 'view'=>'MainView'],
+            '/' => ['controller'=>'MainController', 'view'=>null],
             'error' => ['controller'=>null, 'view'=>'ErrorView'],
             'user_add' => ['controller'=>'AddUserController', 'view'=>'AddUserValidationView'],
             'user_connect' => ['controller'=>'ConnectUserController', 'view'=>'ConnectUserValidationView'],
             'user_disconnect' => ['controller'=>'DisconnectUserController', 'view'=>'DisconnectUserView'],
-            'upload_activity' => ['controller'=>'UploadActivityController', 'view'=>''],
+            'upload_activity' => ['controller'=>'UploadActivityController', 'view'=>'UploadActivityValidation'],
             'list_activities' => ['controller'=>'ListActivitiesController', 'view'=>'ListActivitiesView'],
             'user_add_form' => ['controller'=>null, 'view'=>'AddUserForm'],
             'user_connect_form' => ['controller'=>null, 'view'=>'ConnectUserForm'],
@@ -44,7 +44,7 @@ class ApplicationController{
     if(array_key_exists($request['page'], $this->routes)){
     return $this->routes[$request['page']]['controller'];
 }
-    return null;
+    return $this->routes['user_connect']['controller'];
 }
 
     /**
@@ -58,7 +58,7 @@ class ApplicationController{
     if( array_key_exists($request['page'], $this->routes)){
     return $this->routes[$request['page']]['view'];
 }
-    return $this->routes['error']['view'];
+return $this->routes['user_connect']['view'];
 }
 }
 ?>

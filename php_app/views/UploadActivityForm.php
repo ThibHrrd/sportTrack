@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="ressources/css/style.css"/>
         <title>Upload activity data</title>
     </head>
 
@@ -15,8 +15,12 @@
                 <label for="avatar">Choose a JSON sport file : </label>
                 <input type="file" id="fileToUpload" name="fileToUpload" accept=".json" required>
 
-                <input type="submit" value="Envoyer" />
+                <input type="submit" value="Validate" />
 
+            </p>
+
+            <p>
+            <input type=button onclick="document.location.href='/m3104_13/index.php?page=list_activities'"; value="Back to Dashboard"/>
             </p>
 
         </form>

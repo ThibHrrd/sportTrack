@@ -93,4 +93,22 @@ class ActivityEntryDAO {
         }
     }
 
+
+    public function getID() {
+
+        $dbc = SqliteConnection::getInstance()->getConnection();
+        $query = "select id_data from data_activity order by id_data desc";
+        $stmt = $dbc->query($query);
+        $results = $stmt->fetchALL();
+
+        if (empty($results)) {
+            $results = 0;
+        }
+        else {
+            $results = ((int)$results[0]['id_data'])+1;
+        }
+
+        return $results;
+    }
+
     }

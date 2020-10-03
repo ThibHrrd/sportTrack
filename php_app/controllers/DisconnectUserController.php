@@ -6,6 +6,8 @@ require_once("Controller.php");
 
         public function handle($request) {
             if (isset($_SESSION)) {
+                $_SESSION['id'] = "";
+                $_SESSION['activity'] = "";
                 unset($_SESSION);
             }
         }
