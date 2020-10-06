@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet' href='')
+    title AccountCreation
+  body
+    h1
+      | Welcome to registration ! If you already have an account, juste click "Sign in" !
+    form(method='post' action='')
+      p
+        label(for='firstname') Firstame :
+        input#firstname(type='text' name='firstname' pattern='[a-zA-Z]+-?[a-zA-Z]+' placeholder='Firstname' required='')
+      p
+        label(for='lastname') Lastname :
+        input#lastname(type='text' name='lastname' pattern='[a-zA-Z]+-?[a-zA-Z]+' placeholder='Lastname' required='')
+      p
+        label(for='date') Birthdate :
+        input#date(type='date' name='date' placeholder='Date' required='')
+      p
+      p Gender :
+      div
+        label(for='man') Man
+        input#man(type='radio' name='gender' value='man' checked='')
+      div
+        label(for='woman') Woman
+        input#woman(type='radio' name='gender' value='woman')
+      p
+      p
+        label(for='height') Height (cm):
+        input#height(type='number' name='height' min='100' max='250' value='100' required='')
+      p
+        label(for='weight') Weight (kg):
+        input#weight(type='number' name='weight' min='30' max='250' value='30' required='')
+      p
+        label(for='email') Email :
+        input#email(type='email' name='email' placeholder='Email' required='')
+      p
+        label(for='password') Password :
+        input#password(type='password' name='password' pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$' required='')
+      p
+        label(for='password_') Confirm Password :
+        input#password_confirm(type='password' name='_confirm' pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$' required='')
+        // Regex : 8 chars, 1 uppercase letter, one lowercaser letter, one number, one special char
+      p
+        //input(type='submit' value='Envoyer')
+        //input(type='button' onclick="" ;='' value='Sign in')
