@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet' href='ressources/css/style.css')
+    title Login
+  body
+    form(method='post' action='/connect')
+      h1
+        | Welcome to SportTrack ! Please sign in or register !
+      p
+        label(for='email') Email :
+        input#email(type='email' name='email' placeholder='Email' required='')
+      p
+        label(for='password') Password :
+        input#password(type='password' name='password' placeholder='Password' maxlength='40' required='')
+      p
+        input(type='submit' value='Submit')
+        input(type='button' onclick="" value='Register')
