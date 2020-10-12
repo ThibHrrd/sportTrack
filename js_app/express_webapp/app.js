@@ -1,5 +1,9 @@
-var createError = require('http-errors');
+var session = require('express-session');
 var express = require('express');
+var app = express();
+app.use(session({secret:"Jsp_a_quoi_ca_sert",resave:true,saveUninitialized:true,cookie:{secure:true}}));
+
+var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,9 +11,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var connectRouter = require('./routes/connect');
+var disconnectRouter = require('./routes/disconnect');
 //On peut ajouter des routes
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/connect', connectRouter);
+app.use('/disconnect', disconnectRouter);
 //on définit les routes
 
 // catch 404 and forward to error handler

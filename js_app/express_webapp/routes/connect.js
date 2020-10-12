@@ -1,3 +1,4 @@
+const { response } = require('express');
 var express = require('express');
 
 var router = express.Router();
@@ -19,19 +20,23 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(request, response){
 
-  var email = request.email;
-  var password = request.password;
+  var email = request.body.email;
+  var password = request.body.password;
 
-  user_dao.findByKey((email,error, rows) => {
-
-    var valid = false;
+  user_dao.findByKey(email,(error, rows) => {
 
     for (row of rows) {
 
       if (row.password === password) {
 
-        valid = true;
+        sess=request.session;
+        sess.id = row.email;
 
+        response.redirect('/');     
+        
+      }
+      else {
+        //response.redirect('/connect');
       }
     }
 
@@ -39,6 +44,7 @@ router.post('/', function(request, response){
 
   });
 
+//response.redirect('/connect')
 });
 
 module.exports = router;

@@ -31,7 +31,7 @@ router.post('/', function(request, response){
 
   if(confirm === password){
 
-    var user = [firstname, lastname, date, gender, height, weight, email, password];
+    var user = [firstname, lastname, date, gender, weight, height, email, password];
 
     user_dao.findAll((error, rows) => {
       var valid = true;
