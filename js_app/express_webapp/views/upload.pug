@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet' href='ressources/css/style.css')
+    title Upload activity data
+  body
+    form(method='post' action='/upload' enctype='multipart/form-data')
+      p
+        label(for='avatar') Choose a JSON sport file : 
+        input#fileToUpload(type='file' name='fileToUpload' accept='.json' required='')
+        input(type='submit' value='Validate')
+      p
+        input(type='button' onclick="" value='Back to Dashboard')

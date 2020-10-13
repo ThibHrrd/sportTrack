@@ -36,7 +36,7 @@ router.post('/', function(request, response){
         
       }
       else {
-        //response.redirect('/connect');
+        response.redirect('/connect');
       }
     }
 
@@ -44,7 +44,7 @@ router.post('/', function(request, response){
 
   });
 
-//response.redirect('/connect')
+response.redirect('/connect')
 });
 
 module.exports = router;

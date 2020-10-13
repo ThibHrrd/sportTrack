@@ -19,6 +19,10 @@ CREATE TABLE IF NOT EXISTS activity (
 	id_activity INTEGER PRIMARY KEY,
 	activity_date TIMESTAMP NOT NULL,
 	activity_description TEXT NOT NULL,
+	distance INTEGER NOT NULL,
+	max_frequency INTEGER NOT NULL,
+	min_frequency INTEGER NOT NULL,
+	average_frequency INTEGER NOT NULL,
 
 	aUser TEXT NOT NULL,
 	FOREIGN KEY(aUser) REFERENCES user(email)

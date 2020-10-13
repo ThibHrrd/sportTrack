@@ -7,11 +7,13 @@ var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var fileUpload = require('express-fileupload');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var connectRouter = require('./routes/connect');
 var disconnectRouter = require('./routes/disconnect');
+var uploadRouter = require('./routes/upload');
 //On peut ajouter des routes
 
 // view engine setup
@@ -23,11 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload({createParentPath: true}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/connect', connectRouter);
 app.use('/disconnect', disconnectRouter);
+app.use('/upload', uploadRouter);
 //on définit les routes
 
 // catch 404 and forward to error handler

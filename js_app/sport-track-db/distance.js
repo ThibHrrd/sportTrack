@@ -1,8 +1,8 @@
-class CalculDistance{
 
-    constructor(){}
 
-    calculDistance2PointsGPS(lat1, long1, lat2, long2){
+var CalculDistance = function(){
+
+    this.calculDistance2PointsGPS = function(lat1, long1, lat2, long2){
 
         // convert from degrees to radians
         let latFrom = this.deg2rad(lat1);
@@ -20,12 +20,12 @@ class CalculDistance{
         return angle * earthRadius;
     }
 
-    deg2rad(degrees) {
+    this.deg2rad = function(degrees) {
         var pi = Math.PI;
         return degrees * (pi/180);
     }
 
-    calculDIstanceTrajet(activite){
+    this.calculDistanceTrajet = function(activite){
 
         let distance = 0;
         let totalDistance = 0;
@@ -48,18 +48,5 @@ class CalculDistance{
 }
 
 
-calcul = new CalculDistance()
-console.log(calcul.calculDIstanceTrajet({
-    "activity":{
-      "date":"01/09/2018",
-      "description": "IUT -> RU"
-    },
-    "data":[
-      {"time":"13:00:00","cardio_frequency":99,"latitude":47.644795,"longitude":-2.776605,"altitude":18},
-      {"time":"13:00:05","cardio_frequency":100,"latitude":47.646870,"longitude":-2.778911,"altitude":18},
-      {"time":"13:00:10","cardio_frequency":102,"latitude":47.646197,"longitude":-2.780220,"altitude":18},
-      {"time":"13:00:15","cardio_frequency":100,"latitude":47.646992,"longitude":-2.781068,"altitude":17},
-      {"time":"13:00:20","cardio_frequency":98,"latitude":47.647867,"longitude":-2.781744,"altitude":16},
-      {"time":"13:00:25","cardio_frequency":103,"latitude":47.648510,"longitude":-2.780145,"altitude":16}
-    ]
-  }));
+var calcul = new CalculDistance();
+module.exports = calcul;
