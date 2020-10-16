@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS user (
 
 CREATE TABLE IF NOT EXISTS activity (
 
-	id_activity INTEGER PRIMARY KEY,
+	id_activity TEXT PRIMARY KEY,
 	activity_date TIMESTAMP NOT NULL,
 	activity_description TEXT NOT NULL,
 	distance INTEGER NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS activity (
 
 CREATE TABLE IF NOT EXISTS data_activity (
 
-	id_data INTEGER(4) PRIMARY KEY,
+	id_data INTEGER PRIMARY KEY AUTOINCREMENT,
 	data_time DATE TIME NOT NULL,
 	cardio_frequency INTEGER NOT NULL CHECK (cardio_frequency > 0),
 	latitude FLOAT NOT NULL CHECK (latitude >= -90 AND latitude <= 90),

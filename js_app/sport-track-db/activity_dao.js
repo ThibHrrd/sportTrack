@@ -5,7 +5,7 @@ var ActivityDAO = function(){
 
     this.insert = function(values, callback){
 
-        db.run(`INSERT INTO Activity ("id_activity", "activity_date", "activity_description", "aUser") VALUES (?,?,?,?)`, values[0], values[1], values[2], values[3], function(err) {
+        db.run(`INSERT INTO Activity ("id_activity", "activity_date", "activity_description", "distance", "max_frequency", "min_frequency", "average_frequency", "aUser") VALUES (?,?,?,?,?,?,?,?)`, values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], function(err) {
             if (err) {
               return console.log(err.message);
             }

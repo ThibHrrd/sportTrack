@@ -4,10 +4,10 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-    res.redirect('/');
-    req.session.destroy();
-
-
+    req.session.loggedin = false;
+    req.session.email = null;
+    console.log(req.session)
+    res.redirect('/connect');
   });
 
 module.exports = router;

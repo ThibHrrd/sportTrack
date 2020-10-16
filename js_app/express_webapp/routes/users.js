@@ -45,6 +45,8 @@ router.post('/', function(request, response){
       if (valid) {
         console.log(user);
         user_dao.insert(user);
+        response.redirect("/connect");
+        response.end();
       }
     });
 

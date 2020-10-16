@@ -1,7 +1,7 @@
 var session = require('express-session');
 var express = require('express');
 var app = express();
-app.use(session({secret:"Jsp_a_quoi_ca_sert",resave:true,saveUninitialized:true,cookie:{secure:true}}));
+app.use(session({secret:"Jsp_a_quoi_ca_sert",resave:false,saveUninitialized:true,cookie:{secure:false}}));
 
 var createError = require('http-errors');
 var path = require('path');
@@ -14,6 +14,7 @@ var usersRouter = require('./routes/users');
 var connectRouter = require('./routes/connect');
 var disconnectRouter = require('./routes/disconnect');
 var uploadRouter = require('./routes/upload');
+var activitiesRouter = require('./routes/activities');
 //On peut ajouter des routes
 
 // view engine setup
@@ -32,6 +33,7 @@ app.use('/users', usersRouter);
 app.use('/connect', connectRouter);
 app.use('/disconnect', disconnectRouter);
 app.use('/upload', uploadRouter);
+app.use('/activities', activitiesRouter);
 //on définit les routes
 
 // catch 404 and forward to error handler

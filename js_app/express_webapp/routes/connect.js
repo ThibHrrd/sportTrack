@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
 
     if(err != null){
       console.log("ERROR= " +err);
+    }else if (req.session.loggedin == true) {
+      res.redirect('/activities')
     }else {
       res.render('connect', {data:rows});
     }
@@ -22,29 +24,31 @@ router.post('/', function(request, response){
 
   var email = request.body.email;
   var password = request.body.password;
+  var redirect = false;
+
+  console.log("Before");
 
   user_dao.findByKey(email,(error, rows) => {
 
-    for (row of rows) {
+    console.log(rows);
 
-      if (row.password === password) {
+          
+    if (rows[0].password === password) {
+      request.session.loggedin = false;
+			request.session.email = null;
+      request.session.loggedin = true;
+      request.session.email = email;
+      redirect = true;
+      response.redirect("/activities"); 
 
-        sess=request.session;
-        sess.id = row.email;
-
-        response.redirect('/');     
-        
-      }
-      else {
-        response.redirect('/connect');
-      }
     }
 
-    
 
   });
 
-response.redirect('/connect')
+  if (redirect == false) {
+    response.redirect('/connect');
+  }
 });
 
 module.exports = router;
