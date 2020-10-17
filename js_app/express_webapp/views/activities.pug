@@ -1,21 +1,30 @@
 doctype html
 head
   meta(charset='utf-8')
-  link(rel='stylesheet' href='ressources/css/style.css')
+  link(rel='stylesheet' href='stylesheets/style.css')
   title Dashboard
 h1
   | Welcome to your SportTrack dashbord !
 br
 table
-  tr
-    th Date
-    th Description
-    th Start
-    th Duration
-    th Distance (m)
-    th Minimum cardio frequency (bpm)
-    th Maximum cardio frequency (bpm)
-    th Average cardio frequency (bpm)
+  thead
+    tr
+      th Date
+      th Description
+      th Distance (m)
+      th Minimum cardio frequency
+      th Maximum cardio frequency
+      th Average cardio frequency
+  tbody
+    each val in data
+      tr
+        td= val.date
+        td= val.description
+        td= val.distance
+        td= val.min
+        td= val.max
+        td= val.average
+
 br
 br
 br

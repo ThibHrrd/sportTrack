@@ -6,7 +6,6 @@ router.get('/', function(req, res, next) {
 
     req.session.loggedin = false;
     req.session.email = null;
-    console.log(req.session)
     res.redirect('/connect');
   });
 

@@ -10,6 +10,8 @@ router.get('/', function(req, res, next) {
 
     if(err != null){
       console.log("ERROR= " +err);
+    }else if (req.session.loggedin == true) {
+      res.redirect('/activities')
     }else {
       res.render('users', {data:rows});
     }
@@ -43,7 +45,6 @@ router.post('/', function(request, response){
       }
 
       if (valid) {
-        console.log(user);
         user_dao.insert(user);
         response.redirect("/connect");
         response.end();
@@ -52,9 +53,7 @@ router.post('/', function(request, response){
 
   }else{
 
-    response.send('Match the password');
-
-
+    response.redirect("/users");
   }
   
   

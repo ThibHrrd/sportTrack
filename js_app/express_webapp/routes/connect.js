@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   user_dao.findAll(function(err, rows) {
 
     if(err != null){
-      console.log("ERROR= " +err);
+      console.log("ERROR= " + err);
     }else if (req.session.loggedin == true) {
       res.redirect('/activities')
     }else {
@@ -26,29 +26,27 @@ router.post('/', function(request, response){
   var password = request.body.password;
   var redirect = false;
 
-  console.log("Before");
+  
+  user_dao.findByKey(email,function(err, row){
 
-  user_dao.findByKey(email,(error, rows) => {
+    if(row.length == 0){
 
-    console.log(rows);
+      response.redirect("/users");
 
-          
-    if (rows[0].password === password) {
-      request.session.loggedin = false;
-			request.session.email = null;
-      request.session.loggedin = true;
-      request.session.email = email;
-      redirect = true;
-      response.redirect("/activities"); 
+    }else{
 
+      if (row[0].password == password) {
+        request.session.loggedin = true;
+        request.session.email = email;
+        response.redirect("/activities");
+        
+      }else{
+
+        response.redirect("/connect");
+
+      }
     }
-
-
   });
-
-  if (redirect == false) {
-    response.redirect('/connect');
-  }
 });
 
 module.exports = router;
